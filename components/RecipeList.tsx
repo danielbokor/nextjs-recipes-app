@@ -1,8 +1,8 @@
-import { useRecipes } from "@/hooks/useRecipes";
+import { getRecipes } from "@/utils/getRecipes";
 import RecipeCard from "./RecipeCard";
 
 export default async function RecipeList() {
-  const { data: recipeList } = await useRecipes({
+  const { data: recipeList } = await getRecipes({
     delay: 1000,
   });
 

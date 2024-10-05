@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export default function Header() {
   return (
     <div className="w-full bg-gray-800">
@@ -17,12 +15,9 @@ export default function Header() {
         </div>
 
         <div className="flex-shrink-0">
-          <Link
-            href="/signin"
-            className="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold rounded-md"
-          >
+          <span className="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold rounded-md">
             Sign In
-          </Link>
+          </span>
         </div>
       </header>
     </div>
