@@ -23,9 +23,9 @@ export async function getRecipes(
   }
 
   const response = await fetch(`http://localhost:3000/recipes?${queryParams}`, {
-    next: {
-      revalidate: 60,
-    },
+    // next: {
+    //   revalidate: 60,
+    // },
   });
 
   if (response.ok) {

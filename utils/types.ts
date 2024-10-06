@@ -8,3 +8,11 @@ export type Recipe = {
   createdAt: string;
   rating?: number;
 };
+
+export type Comment = {
+  id: string;
+  name: string;
+  email: string;
+  comment: string;
+  createdAt: string;
+};

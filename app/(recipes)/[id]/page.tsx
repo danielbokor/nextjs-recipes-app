@@ -1,27 +1,28 @@
+import Comments from "@/components/Comments";
 import { getRecipe } from "@/utils/getRecipe";
-import { getRecipes } from "@/utils/getRecipes";
 import * as he from "he";
 import Image from "next/image";
+import { Suspense } from "react";
 
-export const revalidate = 60;
+// export const revalidate = 3600;
 
-export const dynamicParams = true;
+// export const dynamicParams = true;
 
-export async function generateStaticParams() {
-  let response;
-  try {
-    response = await getRecipes();
-  } catch (e) {
-    console.error(e);
-    return [];
-  }
+// export async function generateStaticParams() {
+//   let response;
+//   try {
+//     response = await getRecipes();
+//   } catch (e) {
+//     console.error(e);
+//     return [];
+//   }
 
-  const { data: recipes } = response;
+//   const { data: recipes } = response;
 
-  return recipes.map((recipe) => ({
-    id: recipe.id,
-  }));
-}
+//   return recipes.map((recipe) => ({
+//     id: recipe.id,
+//   }));
+// }
 
 export default async function RecipePage({
   params: { id },
@@ -55,6 +56,10 @@ export default async function RecipePage({
       <p>{he.decode(recipe.ingredients)}</p>
       <h2 className="text-2xl font-bold mt-6 mb-2">Directions</h2>
       <p>{he.decode(recipe.directions)}</p>
+
+      <Suspense fallback={<div>Loading comments...</div>}>
+        <Comments recipeId={recipe.id} />
+      </Suspense>
     </div>
   );
 }

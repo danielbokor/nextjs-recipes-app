@@ -6,9 +6,9 @@ export async function getRecipe(id: string): Promise<Recipe | null> {
   }
 
   const response = await fetch(`http://localhost:3000/recipes/${id}`, {
-    next: {
-      revalidate: 60,
-    },
+    // next: {
+    //   revalidate: 60,
+    // },
   });
 
   if (response.status === 404) {

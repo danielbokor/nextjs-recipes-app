@@ -1,9 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    remotePatterns: [{
-      hostname: 'localhost'
-    }],
+    remotePatterns: [
+      {
+        hostname: "localhost",
+      },
+    ],
+  },
+  experimental: {
+    // ppr: true,
   },
 };
 
