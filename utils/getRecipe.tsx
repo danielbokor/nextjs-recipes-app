@@ -5,7 +5,19 @@ export async function getRecipe(id: string): Promise<Recipe | null> {
     return null;
   }
 
-  const url = `http://localhost:3000/recipes/${id}`;
+  const response = await fetch(`http://localhost:3000/recipes/${id}`, {
+    next: {
+      revalidate: 60,
+    },
+  });
 
-  return fetch(url).then((response) => response.json());
+  if (response.status === 404) {
+    return null;
+  }
+
+  if (response.ok) {
+    return response.json();
+  }
+
+  throw new Error("Failed to fetch the recipe");
 }

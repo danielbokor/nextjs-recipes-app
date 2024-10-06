@@ -18,11 +18,19 @@ export async function getRecipes(
     .map(([key, value]) => `${key}=${value}`)
     .join("&");
 
-  const url = `http://localhost:3000/recipes?${queryParams}`;
-
   if (ms) {
     await delay(ms);
   }
 
-  return fetch(url).then((response) => response.json());
+  const response = await fetch(`http://localhost:3000/recipes?${queryParams}`, {
+    next: {
+      revalidate: 60,
+    },
+  });
+
+  if (response.ok) {
+    return response.json();
+  }
+
+  throw new Error("Failed to fetch the recipes");
 }

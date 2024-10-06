@@ -1,4 +1,5 @@
 import { Recipe } from "@/utils/types";
+import * as he from "he";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -8,7 +9,7 @@ type RecipeCardProps = {
 
 export default function RecipeCard({ recipe }: RecipeCardProps) {
   return (
-    <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+    <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg block transition ease-in-out md:hover:scale-105">
       <Link href={`/${recipe.id}`}>
         <Image
           src={recipe.image}
@@ -22,7 +23,7 @@ export default function RecipeCard({ recipe }: RecipeCardProps) {
         <Link href={`/${recipe.id}`}>
           <h2 className="text-xl font-bold">{recipe.name}</h2>
         </Link>
-        <p className="text-white-700">{recipe.description}</p>
+        <p className="text-white-700">{he.decode(recipe.description)}</p>
         {recipe.rating && (
           <div className="mt-2 flex items-center">
             <span className="text-yellow-500 mr-1">⭐</span>
