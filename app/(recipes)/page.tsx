@@ -1,6 +1,5 @@
-import RecipeList from "@/components/RecipeList";
+import { RecipeList, RecipeListSkeleton } from "@/components/RecipeList";
 import { Suspense } from "react";
-import RecipeListSkeleton from "../../components/skeletons/RecipeListSkeleton";
 
 export const revalidate = 60;
 

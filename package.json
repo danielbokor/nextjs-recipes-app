@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.1.5",
+    "clsx": "^2.1.1",
     "he": "^1.2.0",
-    "next": "14.2.13",
-    "react": "^18",
-    "react-dom": "^18"
+    "next": "^15.0.0-canary.179",
+    "react": "^19.0.0-rc-1460d67c-20241003",
+    "react-dom": "^19.0.0-rc-1460d67c-20241003"
   },
   "devDependencies": {
     "@types/he": "^1.2.3",
@@ -20,9 +22,12 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.2.13",
+    "eslint-config-next": "^15.0.0-canary.179",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

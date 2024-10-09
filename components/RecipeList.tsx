@@ -1,7 +1,7 @@
 import { getRecipes } from "@/utils/getRecipes";
-import RecipeCard from "./RecipeCard";
+import { RecipeCard } from "./RecipeCard";
 
-export default async function RecipeList() {
+export async function RecipeList() {
   let response;
   try {
     response = await getRecipes();
@@ -17,6 +17,20 @@ export default async function RecipeList() {
       {recipeList.map((recipe) => (
         <RecipeCard recipe={recipe} key={recipe.id} />
       ))}
+    </div>
+  );
+}
+
+import { RecipeCardSkeleton } from "./RecipeCard";
+
+export function RecipeListSkeleton() {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {Array(6)
+        .fill(null)
+        .map((_, index) => (
+          <RecipeCardSkeleton key={index} />
+        ))}
     </div>
   );
 }
