@@ -5,7 +5,7 @@ import * as he from "he";
 import Image from "next/image";
 import { Suspense } from "react";
 
-// export const revalidate = 60;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   let response;
@@ -24,12 +24,10 @@ export async function generateStaticParams() {
 }
 
 interface RecipePageProps {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }
 
-export default async function RecipePage({ params }: RecipePageProps) {
-  const { id } = await params;
-
+export default async function RecipePage({ params: { id } }: RecipePageProps) {
   let recipe;
   try {
     recipe = await getRecipe(id);
