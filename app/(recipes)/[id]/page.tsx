@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Suspense } from "react";
 
 export const revalidate = 60;
+export const dynamic = "force-static";
 
 export async function generateStaticParams() {
   let response;
