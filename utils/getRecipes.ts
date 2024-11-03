@@ -11,7 +11,7 @@ export async function getRecipes(
     page?: number;
     delay?: number;
   } = { delay: 0 }
-): Promise<{ data: Recipe[]; total: number }> {
+): Promise<{ data: Recipe[]; total: number; page: number; limit: number }> {
   const { delay: ms, ...remainingParams } = params;
 
   const queryParams = Object.entries(remainingParams)

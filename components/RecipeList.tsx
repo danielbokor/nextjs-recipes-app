@@ -1,26 +1,34 @@
 import { getRecipes } from "@/utils/getRecipes";
 import { RecipeCard } from "./RecipeCard";
+interface RecipeListProps {
+  currentPage: number;
+}
 
-export async function RecipeList() {
+export async function RecipeList({ currentPage }: RecipeListProps) {
   let response;
   try {
-    response = await getRecipes();
+    response = await getRecipes({ page: currentPage, limit: 6 });
   } catch (e) {
     console.error(e);
     return <div>No recipes found!</div>;
   }
 
-  const { data: recipeList } = response;
+  const { data: recipeList, total: totalItems, limit } = response;
+  const totalPages = Math.ceil(totalItems / limit);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {recipeList.map((recipe) => (
-        <RecipeCard recipe={recipe} key={recipe.id} />
-      ))}
+    <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {recipeList.map((recipe) => (
+          <RecipeCard recipe={recipe} key={recipe.id} />
+        ))}
+      </div>
+      <Pagination currentPage={currentPage} totalPages={totalPages} />
     </div>
   );
 }
 
+import { Pagination } from "./Pagination";
 import { RecipeCardSkeleton } from "./RecipeCard";
 
 export function RecipeListSkeleton() {
