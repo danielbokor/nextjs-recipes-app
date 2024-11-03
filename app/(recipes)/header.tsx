@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Search } from "../../components/Search";
 
 export default function Header() {
   return (
@@ -10,13 +11,7 @@ export default function Header() {
           </Link>
         </div>
 
-        <div className="flex-grow mx-4">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="w-full p-2 text-gray-800 rounded-md"
-          />
-        </div>
+        <Search />
 
         <div className="flex-shrink-0">
           <span className="px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white font-semibold rounded-md">

@@ -2,12 +2,20 @@ import { getRecipes } from "@/utils/getRecipes";
 import { RecipeCard } from "./RecipeCard";
 interface RecipeListProps {
   currentPage: number;
+  searchQuery?: string;
 }
 
-export async function RecipeList({ currentPage }: RecipeListProps) {
+export async function RecipeList({
+  currentPage,
+  searchQuery,
+}: RecipeListProps) {
   let response;
   try {
-    response = await getRecipes({ page: currentPage, limit: 6 });
+    response = await getRecipes({
+      page: currentPage,
+      limit: 6,
+      query: searchQuery,
+    });
   } catch (e) {
     console.error(e);
     return <div>No recipes found!</div>;
@@ -23,7 +31,11 @@ export async function RecipeList({ currentPage }: RecipeListProps) {
           <RecipeCard recipe={recipe} key={recipe.id} />
         ))}
       </div>
-      <Pagination currentPage={currentPage} totalPages={totalPages} />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        query={searchQuery}
+      />
     </div>
   );
 }
