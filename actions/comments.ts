@@ -13,7 +13,7 @@ export async function createComment(formData: FormData): Promise<void> {
   }
 
   const response = await fetch(
-    `http://localhost:3000/recipes/${recipeId}/comments`,
+    `${process.env.API_URL}/recipes/${recipeId}/comments`,
     {
       method: "POST",
       headers: {

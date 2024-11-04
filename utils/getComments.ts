@@ -14,7 +14,7 @@ export async function getComments(
   }
 
   const response = await fetch(
-    `http://localhost:3000/recipes/${recipeId}/comments`,
+    `${process.env.API_URL}/recipes/${recipeId}/comments`,
     {
       cache: "no-store",
       next: {

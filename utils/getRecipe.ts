@@ -5,7 +5,7 @@ export async function getRecipe(id: string): Promise<Recipe | null> {
     return null;
   }
 
-  const response = await fetch(`http://localhost:3000/recipes/${id}`, {
+  const response = await fetch(`${process.env.API_URL}/recipes/${id}`, {
     next: {
       revalidate: 60,
     },

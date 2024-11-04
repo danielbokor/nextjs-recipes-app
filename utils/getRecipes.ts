@@ -22,11 +22,14 @@ export async function getRecipes(
     await delay(ms);
   }
 
-  const response = await fetch(`http://localhost:3000/recipes?${queryParams}`, {
-    next: {
-      revalidate: 60,
-    },
-  });
+  const response = await fetch(
+    `${process.env.API_URL}/recipes?${queryParams}`,
+    {
+      next: {
+        revalidate: 60,
+      },
+    }
+  );
 
   if (response.ok) {
     return response.json();
