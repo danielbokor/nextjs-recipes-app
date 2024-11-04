@@ -17,6 +17,9 @@ export async function getComments(
     `http://localhost:3000/recipes/${recipeId}/comments`,
     {
       cache: "no-store",
+      next: {
+        tags: ["comments"],
+      },
     }
   );
 

@@ -2,7 +2,7 @@ import { getComments } from "@/utils/getComments";
 
 export async function Comments({ recipeId }: { recipeId: string }) {
   const comments = await getComments(recipeId, {
-    delay: 2500,
+    delay: 0,
   });
 
   if (!comments || comments.length === 0) {

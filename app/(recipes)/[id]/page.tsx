@@ -4,6 +4,7 @@ import { getRecipes } from "@/utils/getRecipes";
 import * as he from "he";
 import Image from "next/image";
 import { Suspense } from "react";
+import { NewCommentForm } from "../../../components/NewCommentForm";
 
 export const revalidate = 60;
 export const dynamic = "force-static";
@@ -59,6 +60,8 @@ export default async function RecipePage({ params: { id } }: RecipePageProps) {
       <Suspense fallback={<CommentsSkeleton />}>
         <Comments recipeId={recipe.id} />
       </Suspense>
+
+      <NewCommentForm recipeId={recipe.id} />
     </div>
   );
 }
